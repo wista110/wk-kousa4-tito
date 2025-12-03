@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お知らせ | ぽかぽかリンゴ農園</title>
+    
+    <!-- Google Fonts: 親しみやすい丸ゴシック体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS ファイル読み込み-->
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <style>
+        /* --- 共通設定 / 変数 (トップページと共通) --- */
+        :root {
+            --primary-color: #e87a7a; /* 優しい赤（リンゴ） */
+            --secondary-color: #9dc88d; /* 優しい緑（葉っぱ） */
+            --accent-color: #f4d35e; /* クリームイエロー */
+            --text-color: #5d554a; /* 焦げ茶色（文字） */
+            --bg-color: #fdfbf7; /* 生成り色（背景） */
+            --white: #ffffff;
+            --border-color: #ececec;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            line-height: 1.8;
+            background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* --- ヘッダー (トップページと共通) --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pc-nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        .pc-nav a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        /* 現在のページを示すスタイル */
+        .pc-nav a.current {
+            color: var(--primary-color);
+        }
+        .pc-nav a.current::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .pc-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ハンバーガーメニュー (Mobile) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+            transition: 0.4s;
+            border-radius: 5px;
+        }
+        .sp-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+        .sp-nav.active { right: 0; }
+        .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger.active .bar:nth-child(2) { opacity: 0; }
+        .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+
+        /* --- Newsページ固有スタイル --- */
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .container {
+            max-width: 900px; /* 画像に合わせて少し狭めに */
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        /* カテゴリフィルター（タブ） */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: 1px solid #ddd;
+            padding: 8px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            color: #888;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(232, 122, 122, 0.3);
+        }
+
+        /* ニュースリスト */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: 0.3s;
+            display: block; /* リンクとして機能させるため */
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: #ffdada;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .news-date {
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-label {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* ラベルごとの色分け */
+        .label-news { background: #ffe4e4; color: var(--primary-color); }
+        .label-event { background: #e6f4e6; color: var(--secondary-color); }
+        .label-media { background: #fef7db; color: #d4a72c; }
+        .label-product { background: #e0f2f7; color: #4a9bb5; }
+
+        .news-card-title {
+            font-size: 1.3rem;
+            margin: 0 0 10px;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .news-card-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ページネーション */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 60px;
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid #ddd;
+            color: #888;
+            transition: 0.3s;
+        }
+
+        .page-link:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .page-link.current {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+            pointer-events: none;
+        }
+
+        /* --- Footer (画像のデザインに合わせてリッチ化) --- */
+        footer {
+            background-color: #8d7b68; /* 画像に近い落ち着いた茶色 */
+            color: var(--white);
+            padding: 60px 20px 20px;
+            margin-top: 80px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 40px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-logo p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            opacity: 0.9;
+        }
+
+        .copyright {
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 768px) {
+            .pc-nav { display: none; }
+            .hamburger { display: block; }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .page-title { font-size: 1.8rem; }
+            .news-card-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-apple-whole"></i>
+            ぽかぽかリンゴ農園
+        </a>
+
+        <!-- PC Navigation -->
+        <nav class="pc-nav">
+            <ul>
+                <li><a href="top.html">Top</a></li>
+                <li><a href="news.html" class="current">News</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="ourapple.html">Our Apples</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Hamburger -->
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="sp-nav">
+            <ul>
+                <li><a href="top.html">Top</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="ourapple.html">Our Apples</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">お知らせ</h1>
+            <p class="page-subtitle">農園の最新情報をお届けします</p>
+        </section>
+
+        <div class="container">
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="filter-btn active" data-filter="all">すべて</button>
+                <button class="filter-btn" data-filter="news">お知らせ</button>
+                <button class="filter-btn" data-filter="event">イベント</button>
+                <button class="filter-btn" data-filter="product">新商品</button>
+                <button class="filter-btn" data-filter="media">メディア</button>
+            </div>
+
+            <!-- News List -->
+            <div class="news-list">
+                <!-- Item 1 -->
+                <a href="#" class="news-card" data-category="news">
+                    <div class="news-meta">
+                        <span class="news-date"><i class="fa-regular fa-calendar"></i> 2024.11.23</span>
+                        <span class="news-label label-news">お知らせ</span>
+                    </div>
+                    <h2 class="news-card-title">今シーズンの収穫が終了しました</h2>
+                    <p class="news-card-excerpt">
+                        本年度のリンゴ収穫が無事に終了いたしました。今年は天候にも恵まれ、例年以上に美味しいリンゴが収穫できました。ご注文いただいた皆様、誠にありがとうございました。
+                    </p>
+                </a>
+
+                <!-- Item 2 -->
+                <a href="#" class="news-card" data-category="event">
+                    <div class="news-meta">
+                        <span class="news-date"><i class="fa-regular fa-calendar"></i> 2024.10.15</span>
+                        <span class="news-label label-event">イベント</span>
+                    </div>
+                    <h2 class="news-card-title">リンゴ狩り体験を開催しました</h2>
+                    <p class="news-card-excerpt">
+                        10月の週末にリンゴ狩り体験イベントを開催しました。たくさんのご家族にお越しいただき、楽しい時間を過ごしていただきました。来年も実施予定ですので、ぜひお越しください。
+                    </p>
+                </a>
+
+                <!-- Item 3 -->
+                <a href="#" class="news-card" data-category="product">
+                    <div class="news-meta">
+                        <span class="news-date"><i class="fa-regular fa-calendar"></i> 2024.09.10</span>
+                        <span class="news-label label-product">新商品</span>
+                    </div>
+                    <h2 class="news-card-title">リンゴジュースの販売を開始しました</h2>
+                    <p class="news-card-excerpt">
+                        当農園で収穫したリンゴを100%使用したリンゴジュースの販売を開始しました。添加物不使用で、リンゴ本来の甘みと香りをお楽しみいただけます。オンラインショップでもご購入いただけます。
+                    </p>
+                </a>
+
+                <!-- Item 4 -->
+                <a href="#" class="news-card" data-category="news">
+                    <div class="news-meta">
+                        <span class="news-date"><i class="fa-regular fa-calendar"></i> 2024.08.20</span>
+                        <span class="news-label label-news">お知らせ</span>
+                    </div>
+                    <h2 class="news-card-title">秋の収穫シーズンが始まります</h2>
+                    <p class="news-card-excerpt">
+                        9月から本格的な収穫シーズンが始まります。今年は夏の気温が高かったため、甘みの強いリンゴが期待できます。ご予約を受け付けておりますので、お早めにお問い合わせください。
+                    </p>
+                </a>
+
+                <!-- Item 5 -->
+                <a href="#" class="news-card" data-category="media">
+                    <div class="news-meta">
+                        <span class="news-date"><i class="fa-regular fa-calendar"></i> 2024.07.05</span>
+                        <span class="news-label label-media">メディア</span>
+                    </div>
+                    <h2 class="news-card-title">地元テレビ局に取材されました</h2>
+                    <p class="news-card-excerpt">
+                        地元のテレビ局から取材を受け、当農園のリンゴ栽培の様子が放送されました。家族で協力して育てるリンゴへの想いをお話しさせていただきました。
+                    </p>
+                </a>
+
+                <!-- Item 6 -->
+                <a href="#" class="news-card" data-category="news">
+                    <div class="news-meta">
+                        <span class="news-date"><i class="fa-regular fa-calendar"></i> 2024.06.15</span>
+                        <span class="news-label label-news">お知らせ</span>
+                    </div>
+                    <h2 class="news-card-title">農園見学の受付を開始しました</h2>
+                    <p class="news-card-excerpt">
+                        7月から8月限定で、農園見学の受付を開始いたしました。リンゴの木々や農園の様子をご覧いただけます。事前予約制となっておりますので、お問い合わせフォームよりご予約ください。
+                    </p>
+                </a>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link current">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Logo & Desc -->
+            <div class="footer-logo">
+                <h3><i class="fa-solid fa-apple-whole"></i> ぽかぽかリンゴ農園</h3>
+                <p>
+                    美味しいリンゴを心を込めて育てています。自然豊かな環境で育った新鮮なリンゴをお届けします。<br>
+                    家族の笑顔が集まる食卓に、私たちのリンゴを。
+                </p>
+            </div>
+            
+            <!-- Links -->
+            <div class="footer-links">
+                <h4>クイックリンク</h4>
+                <ul>
+                    <li><a href="top.html">TOP</a></li>
+                    <li><a href="news.html">お知らせ</a></li>
+                    <li><a href="about.html">農園について</a></li>
+                    <li><a href="ourapple.html">品種について</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-contact">
+                <h4>お問い合わせ</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 〒000-0000<br>長野県〇〇市〇〇町 123-4</p>
+                <p><i class="fa-solid fa-phone"></i> 026-000-0000</p>
+                <p><i class="fa-solid fa-envelope"></i> info@pokapoka-apple.example</p>
+                <p><i class="fa-brands fa-instagram"></i> @apple_farm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2024 Poka Poka Apple Farm. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript ファイル読み込み-->
+    <script src="main.js"></script>
+</body>
+</html>

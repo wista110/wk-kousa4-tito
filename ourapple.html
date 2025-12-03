@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Apples | ぽかぽかリンゴ農園</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS ファイル読み込み-->
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-apple-whole"></i>
+            ぽかぽかリンゴ農園
+        </a>
+
+        <!-- PC Navigation -->
+        <nav class="pc-nav">
+            <ul>
+                <li><a href="top.html">Top</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="ourapple.html" class="current">Our Apples</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Hamburger -->
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="sp-nav">
+            <ul>
+                <li><a href="index.html">Top</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="ourapple.html">Our Apples</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Our Apples</h1>
+            <p class="page-subtitle">当農園で栽培している自慢のリンゴたちをご紹介します。</p>
+        </section>
+
+        <div class="container">
+            
+            <!-- Harvest Calendar -->
+            <section class="calendar-section">
+                <h2 class="calendar-title"><i class="fa-regular fa-calendar-alt"></i> 収穫時期カレンダー</h2>
+                
+                <div class="harvest-chart">
+                    <!-- Header -->
+                    <div class="chart-header">品種</div>
+                    <div class="chart-header">8月</div>
+                    <div class="chart-header">9月</div>
+                    <div class="chart-header">10月</div>
+                    <div class="chart-header">11月</div>
+
+                    <!-- Row 1: つがる -->
+                    <div class="chart-label">つがる</div>
+                    <div class="chart-bar-area">
+                        <div class="chart-grid-line line-1"></div>
+                        <div class="chart-grid-line line-2"></div>
+                        <div class="chart-grid-line line-3"></div>
+                        <div class="chart-grid-line line-4"></div>
+                        <div class="chart-grid-line line-5"></div>
+                        <div class="chart-bar bar-tsugaru"></div>
+                    </div>
+
+                    <!-- Row 2: 紅玉 -->
+                    <div class="chart-label">紅玉</div>
+                    <div class="chart-bar-area">
+                        <div class="chart-grid-line line-1"></div>
+                        <div class="chart-grid-line line-2"></div>
+                        <div class="chart-grid-line line-3"></div>
+                        <div class="chart-grid-line line-4"></div>
+                        <div class="chart-grid-line line-5"></div>
+                        <div class="chart-bar bar-kougyoku"></div>
+                    </div>
+
+                    <!-- Row 3: ジョナゴールド -->
+                    <div class="chart-label">ジョナゴールド</div>
+                    <div class="chart-bar-area">
+                        <div class="chart-grid-line line-1"></div>
+                        <div class="chart-grid-line line-2"></div>
+                        <div class="chart-grid-line line-3"></div>
+                        <div class="chart-grid-line line-4"></div>
+                        <div class="chart-grid-line line-5"></div>
+                        <div class="chart-bar bar-jona"></div>
+                    </div>
+
+                    <!-- Row 4: シナノゴールド -->
+                    <div class="chart-label">シナノゴールド</div>
+                    <div class="chart-bar-area">
+                        <div class="chart-grid-line line-1"></div>
+                        <div class="chart-grid-line line-2"></div>
+                        <div class="chart-grid-line line-3"></div>
+                        <div class="chart-grid-line line-4"></div>
+                        <div class="chart-grid-line line-5"></div>
+                        <div class="chart-bar bar-shinano" style="background-color: var(--accent-color);"></div>
+                    </div>
+
+                    <!-- Row 5: 王林 -->
+                    <div class="chart-label">王林</div>
+                    <div class="chart-bar-area">
+                        <div class="chart-grid-line line-1"></div>
+                        <div class="chart-grid-line line-2"></div>
+                        <div class="chart-grid-line line-3"></div>
+                        <div class="chart-grid-line line-4"></div>
+                        <div class="chart-grid-line line-5"></div>
+                        <div class="chart-bar bar-orin" style="background-color: #d8e69e;"></div>
+                    </div>
+
+                    <!-- Row 6: ふじ -->
+                    <div class="chart-label">サンふじ</div>
+                    <div class="chart-bar-area">
+                        <div class="chart-grid-line line-1"></div>
+                        <div class="chart-grid-line line-2"></div>
+                        <div class="chart-grid-line line-3"></div>
+                        <div class="chart-grid-line line-4"></div>
+                        <div class="chart-grid-line line-5"></div>
+                        <div class="chart-bar bar-fuji"></div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Variety Cards -->
+            <div class="variety-grid">
+                
+                <!-- Card 1: つがる -->
+                <article class="variety-item">
+                    <div class="variety-img-box">
+                        <span class="variety-tag">早生</span>
+                        <img src="images/apple_red.png" alt="つがる">
+                    </div>
+                    <div class="variety-content">
+                        <div class="variety-harvest-time"><i class="fa-regular fa-clock"></i> 8月下旬〜9月上旬</div>
+                        <h2 class="variety-name">つがる</h2>
+                        <p class="variety-desc">
+                            早生種の代表格。果汁が多く、酸味が穏やかで優しい甘さが特徴です。柔らかめの食感で、小さなお子様にも人気があります。
+                        </p>
+                        <div class="feature-tags">
+                            <span class="f-tag">甘みが強い</span>
+                            <span class="f-tag">果汁たっぷり</span>
+                            <span class="f-tag">早生</span>
+                        </div>
+                        <div class="rating-list">
+                            <div class="rating-row">
+                                <span>甘み</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>酸味</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>硬さ</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2: 紅玉 -->
+                <article class="variety-item">
+                    <div class="variety-img-box">
+                        <span class="variety-tag">調理用</span>
+                        <img src="images/apple_red.png" alt="紅玉">
+                    </div>
+                    <div class="variety-content">
+                        <div class="variety-harvest-time"><i class="fa-regular fa-clock"></i> 9月下旬〜10月中旬</div>
+                        <h2 class="variety-name">紅玉 (こうぎょく)</h2>
+                        <p class="variety-desc">
+                            酸味が強く、加熱しても煮崩れしにくいのが特徴。アップルパイやジャムなどの加工用に最適ですが、酸っぱいリンゴ好きには生食も人気。
+                        </p>
+                        <div class="feature-tags">
+                            <span class="f-tag">酸味が強い</span>
+                            <span class="f-tag">加工向き</span>
+                            <span class="f-tag">香り高い</span>
+                        </div>
+                        <div class="rating-list">
+                            <div class="rating-row">
+                                <span>甘み</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>酸味</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>硬さ</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3: ジョナゴールド -->
+                <article class="variety-item">
+                    <div class="variety-img-box">
+                        <span class="variety-tag">バランス</span>
+                        <img src="images/apple_red.png" alt="ジョナゴールド">
+                    </div>
+                    <div class="variety-content">
+                        <div class="variety-harvest-time"><i class="fa-regular fa-clock"></i> 10月中旬〜10月下旬</div>
+                        <h2 class="variety-name">ジョナゴールド</h2>
+                        <p class="variety-desc">
+                            甘みと酸味のバランスが良く、果汁が豊富な人気品種です。さっぱりとした味わいで、サラダにも合います。
+                        </p>
+                        <div class="feature-tags">
+                            <span class="f-tag">バランス良い</span>
+                            <span class="f-tag">果汁豊富</span>
+                            <span class="f-tag">さっぱり</span>
+                        </div>
+                        <div class="rating-list">
+                            <div class="rating-row">
+                                <span>甘み</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>酸味</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>硬さ</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4: ふじ -->
+                <article class="variety-item">
+                    <div class="variety-img-box">
+                        <span class="variety-tag">人気No.1</span>
+                        <img src="images/apple_red.png" alt="ふじ">
+                    </div>
+                    <div class="variety-content">
+                        <div class="variety-harvest-time"><i class="fa-regular fa-clock"></i> 11月上旬〜</div>
+                        <h2 class="variety-name">サンふじ</h2>
+                        <p class="variety-desc">
+                            日本を代表する品種。甘みが強く、シャキシャキとした食感が魅力。蜜が入りやすく、貯蔵性も高いため長く楽しめます。
+                        </p>
+                        <div class="feature-tags">
+                            <span class="f-tag">甘みが強い</span>
+                            <span class="f-tag">シャキシャキ</span>
+                            <span class="f-tag">蜜入り</span>
+                        </div>
+                        <div class="rating-list">
+                            <div class="rating-row">
+                                <span>甘み</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>酸味</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="rating-row">
+                                <span>硬さ</span>
+                                <span class="stars"><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star filled"></i><i class="fas fa-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+
+            <!-- Comparison Table -->
+            <section class="table-section">
+                <h2 class="table-title"><i class="fa-solid fa-list-check"></i> 品種比較表</h2>
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>品種名</th>
+                                <th>甘み</th>
+                                <th>酸味</th>
+                                <th>硬さ</th>
+                                <th>果汁</th>
+                                <th>おすすめ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-name">つがる</td>
+                                <td class="table-stars">★★★★</td>
+                                <td class="table-stars">★★</td>
+                                <td class="table-stars">★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td>甘めが好き</td>
+                            </tr>
+                            <tr>
+                                <td class="col-name">紅玉</td>
+                                <td class="table-stars">★★</td>
+                                <td class="table-stars">★★★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td class="table-stars">★★★</td>
+                                <td>お菓子作り</td>
+                            </tr>
+                            <tr>
+                                <td class="col-name">ジョナゴールド</td>
+                                <td class="table-stars">★★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td class="table-stars">★★★★★</td>
+                                <td>バランス重視</td>
+                            </tr>
+                            <tr>
+                                <td class="col-name">サンふじ</td>
+                                <td class="table-stars">★★★★★</td>
+                                <td class="table-stars">★★★</td>
+                                <td class="table-stars">★★★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td>蜜入り好き</td>
+                            </tr>
+                            <tr>
+                                <td class="col-name">王林</td>
+                                <td class="table-stars">★★★★★</td>
+                                <td class="table-stars">★★</td>
+                                <td class="table-stars">★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td>芳醇な香り</td>
+                            </tr>
+                            <tr>
+                                <td class="col-name">シナノゴールド</td>
+                                <td class="table-stars">★★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td class="table-stars">★★★★★</td>
+                                <td class="table-stars">★★★★</td>
+                                <td>爽やかな味</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3><i class="fa-solid fa-apple-whole"></i> ぽかぽかリンゴ農園</h3>
+                <p>
+                    美味しいリンゴを心を込めて育てています。自然豊かな環境で育った新鮮なリンゴをお届けします。<br>
+                    家族の笑顔が集まる食卓に、私たちのリンゴを。
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>クイックリンク</h4>
+                <ul>
+                    <li><a href="index.html">TOP</a></li>
+                    <li><a href="news.html">お知らせ</a></li>
+                    <li><a href="about.html">農園について</a></li>
+                    <li><a href="our_apple.html">Our Apples</a></li>
+                    <li><a href="index.html#contact">お問い合わせ</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>お問い合わせ</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 〒000-0000<br>長野県〇〇市〇〇町 123-4</p>
+                <p><i class="fa-solid fa-phone"></i> 026-000-0000</p>
+                <p><i class="fa-solid fa-envelope"></i> info@pokapoka-apple.example</p>
+                <p><i class="fa-brands fa-instagram"></i> @apple_farm</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2024 Poka Poka Apple Farm. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript ファイル読み込み-->
+    <script src="main.js"></script>
+</body>
+</html>
