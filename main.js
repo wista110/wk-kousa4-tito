@@ -1,6 +1,9 @@
-// TopページのJavaScript
-$(document).ready(function() {
-    // ハンバーガーメニューの開閉
+// ========================================
+// 共通関数
+// ========================================
+
+// ハンバーガーメニューの開閉（全ページ共通）
+function initHamburgerMenu() {
     $('.hamburger').click(function() {
         $(this).toggleClass('active');
         $('.sp-nav').toggleClass('active');
@@ -11,7 +14,47 @@ $(document).ready(function() {
         $('.hamburger').removeClass('active');
         $('.sp-nav').removeClass('active');
     });
+}
 
+// スクロール時のふわっと表示アニメーション（共通関数）
+function initScrollAnimation(selector, offset) {
+    offset = offset || 100; // デフォルト値
+    
+    // 初期CSS調整
+    $(selector).css({
+        'opacity': '0',
+        'transform': 'translateY(20px)',
+        'transition': 'all 0.6s ease'
+    });
+
+    // スクロール時のアニメーション
+    $(window).scroll(function() {
+        $(selector).each(function() {
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + offset) {
+                $(this).css({
+                    'opacity': '1',
+                    'transform': 'translateY(0)'
+                });
+            }
+        });
+    });
+}
+
+// ========================================
+// 全ページ共通の初期化
+// ========================================
+$(document).ready(function() {
+    // ハンバーガーメニュー（全ページ共通）
+    initHamburgerMenu();
+});
+
+// ========================================
+// Topページ固有のJavaScript
+// ========================================
+$(document).ready(function() {
     // スムーズスクロール
     $('a[href^="#"]').click(function() {
         var speed = 500;
@@ -24,41 +67,14 @@ $(document).ready(function() {
         return false;
     });
 
-    // スクロール時のふわっと表示（簡易アニメーション）
-    $(window).scroll(function() {
-        $('.news-item, .variety-card').each(function() {
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 150) {
-                $(this).css({
-                    'opacity': '1',
-                    'transform': 'translateY(0)'
-                });
-            }
-        });
-    });
-
-    // 初期CSS調整（JSでアニメーションさせるための初期値）
-    $('.news-item, .variety-card').css({
-        'opacity': '0',
-        'transform': 'translateY(20px)',
-        'transition': 'all 0.6s ease'
-    });
+    // スクロール時のふわっと表示（トップページ用）
+    initScrollAnimation('.news-item, .variety-card', 150);
 });
 
-// NewsページのJavaScript
+// ========================================
+// Newsページ固有のJavaScript
+// ========================================
 $(document).ready(function() {
-    // ハンバーガーメニュー
-    $('.hamburger').click(function() {
-        $(this).toggleClass('active');
-        $('.sp-nav').toggleClass('active');
-    });
-    $('.sp-nav a').click(function() {
-        $('.hamburger').removeClass('active');
-        $('.sp-nav').removeClass('active');
-    });
-
     // カテゴリフィルター機能
     $('.filter-btn').click(function() {
         var category = $(this).data('filter');
@@ -77,107 +93,26 @@ $(document).ready(function() {
     });
 });
 
-// AboutページのJavaScript
+// ========================================
+// Aboutページ固有のJavaScript
+// ========================================
 $(document).ready(function() {
-    // ハンバーガーメニュー
-    $('.hamburger').click(function() {
-        $(this).toggleClass('active');
-        $('.sp-nav').toggleClass('active');
-    });
-    $('.sp-nav a').click(function() {
-        $('.hamburger').removeClass('active');
-        $('.sp-nav').removeClass('active');
-    });
-
     // タイムラインのアニメーション（スクロールしたらふわっと表示）
-    $(window).scroll(function() {
-        $('.policy-card, .timeline-event').each(function() {
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 100) {
-                $(this).css({
-                    'opacity': '1',
-                    'transform': 'translateY(0)'
-                });
-            }
-        });
-    });
-
-    // 初期CSS調整
-    $('.policy-card, .timeline-event').css({
-        'opacity': '0',
-        'transform': 'translateY(20px)',
-        'transition': 'all 0.6s ease'
-    });
+    initScrollAnimation('.policy-card, .timeline-event', 100);
 });
 
-// ourappleページのJavaScript
+// ========================================
+// ourappleページ固有のJavaScript
+// ========================================
 $(document).ready(function() {
-    // ハンバーガーメニュー
-    $('.hamburger').click(function() {
-        $(this).toggleClass('active');
-        $('.sp-nav').toggleClass('active');
-    });
-    $('.sp-nav a').click(function() {
-        $('.hamburger').removeClass('active');
-        $('.sp-nav').removeClass('active');
-    });
-
     // ふわっと表示アニメーション
-    $(window).scroll(function() {
-        $('.variety-item').each(function() {
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 100) {
-                $(this).css({
-                    'opacity': '1',
-                    'transform': 'translateY(0)'
-                });
-            }
-        });
-    });
-
-    // 初期CSS調整
-    $('.variety-item').css({
-        'opacity': '0',
-        'transform': 'translateY(20px)',
-        'transition': 'all 0.6s ease'
-    });
+    initScrollAnimation('.variety-item', 100);
 });
 
-// contactページのJavaScript
+// ========================================
+// Contactページ固有のJavaScript
+// ========================================
 $(document).ready(function() {
-    // ハンバーガーメニュー
-    $('.hamburger').click(function() {
-        $(this).toggleClass('active');
-        $('.sp-nav').toggleClass('active');
-    });
-    $('.sp-nav a').click(function() {
-        $('.hamburger').removeClass('active');
-        $('.sp-nav').removeClass('active');
-    });
-
     // ふわっと表示
-    $(window).scroll(function() {
-        $('.info-card, .contact-form').each(function() {
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 100) {
-                $(this).css({
-                    'opacity': '1',
-                    'transform': 'translateY(0)'
-                });
-            }
-        });
-    });
-
-    // 初期CSS
-    $('.info-card, .contact-form').css({
-        'opacity': '0',
-        'transform': 'translateY(20px)',
-        'transition': 'all 0.6s ease'
-    });
+    initScrollAnimation('.info-card, .contact-form', 100);
 });

@@ -1,5 +1,6 @@
-
-/* --- 共通設定 / 変数 --- */
+/* ========================================
+   共通設定
+   ======================================== */
 :root {
     --primary-color: #e87a7a; /* 優しい赤（リンゴ） */
     --secondary-color: #9dc88d; /* 優しい緑（葉っぱ） */
@@ -7,6 +8,7 @@
     --text-color: #5d554a; /* 焦げ茶色（文字） */
     --bg-color: #fdfbf7; /* 生成り色（背景） */
     --white: #ffffff;
+    --border-color: #ececec;
 }
 
 * {
@@ -109,7 +111,9 @@ section {
     background-color: #ff8b8b;
 }
 
-/* --- ヘッダー --- */
+/* ========================================
+   ヘッダー（共通）
+   ======================================== */
 header {
     background-color: rgba(255, 255, 255, 0.95);
     padding: 15px 30px;
@@ -161,6 +165,18 @@ header {
     width: 100%;
 }
 
+/* 現在のページを示すスタイル */
+.pc-nav a.current {
+    color: var(--primary-color);
+}
+.pc-nav a.current::after {
+    width: 100%;
+}
+
+.pc-nav a:hover {
+    color: var(--primary-color);
+}
+
 /* ハンバーガーメニュー (Mobile) */
 .hamburger {
     display: none;
@@ -204,7 +220,9 @@ header {
 .hamburger.active .bar:nth-child(2) { opacity: 0; }
 .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
 
-/* --- メインビジュアル (Top) --- */
+/* ========================================
+   トップページ固有スタイル
+   ======================================== */
 #top {
     padding-top: 80px; /* ヘッダー分 */
     min-height: 90vh;
@@ -270,7 +288,7 @@ header {
     100% { transform: translateY(0px) rotate(0deg); }
 }
 
-/* --- News --- */
+/* --- News（トップページ内） --- */
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -319,7 +337,7 @@ header {
     line-height: 1.4;
 }
 
-/* --- About --- */
+/* --- About（トップページ内） --- */
 .about-container {
     display: flex;
     flex-wrap: wrap;
@@ -368,7 +386,7 @@ header {
     display: block;
 }
 
-/* --- Varieties (品種) --- */
+/* --- Varieties (品種)（トップページ内） --- */
 .variety-intro {
     text-align: center;
     margin-bottom: 40px;
@@ -450,13 +468,13 @@ header {
 .comparison-table th {
     background-color: var(--secondary-color);
     color: white;
-    border-radius: 5px 5px 0 0; /* 列ごとに丸みを持たせるのは難しいので背景で調整 */
+    border-radius: 5px 5px 0 0;
 }
 .comparison-table tr:last-child td {
     border-bottom: none;
 }
 
-/* --- Contact --- */
+/* --- Contact（トップページ内） --- */
 .contact-content {
     display: flex;
     flex-wrap: wrap;
@@ -519,166 +537,9 @@ header {
     border-color: var(--secondary-color);
 }
 
-/* --- Footer --- */
-footer {
-    background-color: var(--text-color);
-    color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 60px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* --- レスポンシブ --- */
-@media (max-width: 768px) {
-    .pc-nav { display: none; }
-    .hamburger { display: block; }
-    
-    .hero-title { font-size: 2rem; }
-    .hero-images { transform: scale(0.9); }
-    
-    .hero-img-box:nth-child(2) {
-        width: 180px; height: 180px;
-    }
-    .hero-img-box {
-        width: 140px; height: 140px;
-    }
-
-    section { padding: 50px 20px; }
-}
-
-/* --- 共通設定 / 変数 (トップページと共通) --- */
-:root {
-    --primary-color: #e87a7a; /* 優しい赤（リンゴ） */
-    --secondary-color: #9dc88d; /* 優しい緑（葉っぱ） */
-    --accent-color: #f4d35e; /* クリームイエロー */
-    --text-color: #5d554a; /* 焦げ茶色（文字） */
-    --bg-color: #fdfbf7; /* 生成り色（背景） */
-    --white: #ffffff;
-    --border-color: #ececec;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    margin: 0;
-    line-height: 1.8;
-    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-a {
-    text-decoration: none;
-    color: var(--text-color);
-    transition: 0.3s;
-}
-
-a:hover {
-    opacity: 0.8;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* --- ヘッダー (トップページと共通) --- */
-header {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.pc-nav ul {
-    display: flex;
-    gap: 30px;
-}
-
-.pc-nav a {
-    font-weight: 500;
-    position: relative;
-}
-
-/* 現在のページを示すスタイル */
-.pc-nav a.current {
-    color: var(--primary-color);
-}
-.pc-nav a.current::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--secondary-color);
-}
-
-.pc-nav a:hover {
-    color: var(--primary-color);
-}
-
-/* ハンバーガーメニュー (Mobile) */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    z-index: 1001;
-}
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 5px 0;
-    transition: 0.4s;
-    border-radius: 5px;
-}
-.sp-nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    height: 100vh;
-    background-color: var(--bg-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-    z-index: 1000;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-}
-.sp-nav.active { right: 0; }
-.hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-.hamburger.active .bar:nth-child(2) { opacity: 0; }
-.hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
-
-/* --- Newsページ固有スタイル --- */
+/* ========================================
+   Newsページ固有スタイル
+   ======================================== */
 .page-header {
     padding-top: 120px;
     padding-bottom: 40px;
@@ -832,181 +693,9 @@ header {
     pointer-events: none;
 }
 
-/* --- Footer (画像のデザインに合わせてリッチ化) --- */
-footer {
-    background-color: #8d7b68; /* 画像に近い落ち着いた茶色 */
-    color: var(--white);
-    padding: 60px 20px 20px;
-    margin-top: 80px;
-    font-size: 0.9rem;
-}
-
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 40px;
-}
-
-.footer-logo h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-logo p {
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-.footer-links h4, .footer-contact h4 {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.footer-links ul li {
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    color: var(--white);
-    opacity: 0.8;
-}
-
-.footer-links a:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
-
-.footer-contact p {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    opacity: 0.9;
-}
-
-.copyright {
-    text-align: center;
-    opacity: 0.6;
-    font-size: 0.8rem;
-}
-
-/* レスポンシブ調整 */
-@media (max-width: 768px) {
-    .pc-nav { display: none; }
-    .hamburger { display: block; }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .page-title { font-size: 1.8rem; }
-    .news-card-title { font-size: 1.1rem; }
-}
-
-/* aboutページのCSS */
-/* --- 共通設定 (Newsページと同一) --- */
-:root {
-    --primary-color: #e87a7a;
-    --secondary-color: #9dc88d;
-    --accent-color: #f4d35e;
-    --text-color: #5d554a;
-    --bg-color: #fdfbf7;
-    --white: #ffffff;
-    --border-color: #ececec;
-}
-
-* { box-sizing: border-box; }
-
-body {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    margin: 0;
-    line-height: 1.8;
-    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-a { text-decoration: none; color: var(--text-color); transition: 0.3s; }
-a:hover { opacity: 0.8; }
-ul { list-style: none; padding: 0; margin: 0; }
-img { max-width: 100%; height: auto; border-radius: 10px; }
-
-/* --- ヘッダー --- */
-header {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.pc-nav ul { display: flex; gap: 30px; }
-.pc-nav a { font-weight: 500; position: relative; }
-
-.pc-nav a.current { color: var(--primary-color); }
-.pc-nav a.current::after {
-    content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--secondary-color);
-}
-
-.hamburger { display: none; cursor: pointer; z-index: 1001; }
-.bar { width: 25px; height: 3px; background-color: var(--text-color); margin: 5px 0; transition: 0.4s; border-radius: 5px; }
-
-.sp-nav {
-    position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-    background-color: var(--bg-color); display: flex; flex-direction: column;
-    justify-content: center; align-items: center; transition: 0.4s; z-index: 1000;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-}
-.sp-nav.active { right: 0; }
-.hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-.hamburger.active .bar:nth-child(2) { opacity: 0; }
-.hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
-
-/* --- Aboutページ固有スタイル --- */
-.page-header {
-    padding-top: 120px;
-    padding-bottom: 40px;
-    text-align: center;
-}
-.page-title {
-    font-size: 2.2rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-}
-.page-subtitle { font-size: 0.9rem; color: #888; }
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-}
-
+/* ========================================
+   Aboutページ固有スタイル
+   ======================================== */
 /* メインビジュアル画像 */
 .about-main-visual {
     width: 100%;
@@ -1022,14 +711,14 @@ header {
     text-align: center;
     margin-bottom: 100px;
 }
-.section-title {
+.policy-section .section-title {
     font-size: 1.8rem;
     color: #8d7b68; /* 茶色系 */
     margin-bottom: 50px;
     display: inline-block;
     position: relative;
 }
-.section-title::after {
+.policy-section .section-title::after {
     content: ''; display: block; width: 60%; height: 3px; background: var(--primary-color);
     margin: 10px auto 0; opacity: 0.5; border-radius: 2px;
 }
@@ -1202,140 +891,9 @@ header {
     margin-left: 5px;
 }
 
-/* --- Footer (Newsページと同一) --- */
-footer {
-    background-color: #8d7b68;
-    color: var(--white);
-    padding: 60px 20px 20px;
-    margin-top: 80px;
-    font-size: 0.9rem;
-}
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 40px;
-}
-.footer-logo h3 { font-size: 1.4rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-.footer-links h4, .footer-contact h4 { font-size: 1.1rem; margin-bottom: 20px; color: #fff; }
-.footer-links ul li { margin-bottom: 10px; }
-.footer-links a { color: var(--white); opacity: 0.8; }
-.copyright { text-align: center; opacity: 0.6; font-size: 0.8rem; }
-
-/* --- レスポンシブ調整 --- */
-@media (max-width: 768px) {
-    .pc-nav { display: none; }
-    .hamburger { display: block; }
-    .footer-content { grid-template-columns: 1fr; }
-    
-    /* タイムラインのスマホ対応 */
-    .timeline::after { left: 31px; }
-    .timeline-event { width: 100%; padding-left: 70px; padding-right: 25px; }
-    .timeline-event.left, .timeline-event.right { text-align: left; left: 0; }
-    .timeline-event.left::after, .timeline-event.right::after { left: 23px; }
-    
-    .stats-banner { flex-direction: column; gap: 40px; }
-    
-    .about-main-visual { height: 250px; }
-}
-
-/*ourappleページのCSS
-/* --- 共通設定 (他ページと統一) --- */
-:root {
-    --primary-color: #e87a7a;
-    --secondary-color: #9dc88d;
-    --accent-color: #f4d35e;
-    --text-color: #5d554a;
-    --bg-color: #fdfbf7;
-    --white: #ffffff;
-    --border-color: #ececec;
-}
-
-* { box-sizing: border-box; }
-
-body {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    margin: 0;
-    line-height: 1.8;
-    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-a { text-decoration: none; color: var(--text-color); transition: 0.3s; }
-a:hover { opacity: 0.8; }
-ul { list-style: none; padding: 0; margin: 0; }
-img { max-width: 100%; height: auto; border-radius: 10px; }
-
-/* --- ヘッダー --- */
-header {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.pc-nav ul { display: flex; gap: 30px; }
-.pc-nav a { font-weight: 500; position: relative; }
-.pc-nav a.current { color: var(--primary-color); }
-.pc-nav a.current::after {
-    content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--secondary-color);
-}
-
-.hamburger { display: none; cursor: pointer; z-index: 1001; }
-.bar { width: 25px; height: 3px; background-color: var(--text-color); margin: 5px 0; transition: 0.4s; border-radius: 5px; }
-
-.sp-nav {
-    position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-    background-color: var(--bg-color); display: flex; flex-direction: column;
-    justify-content: center; align-items: center; transition: 0.4s; z-index: 1000;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-}
-.sp-nav.active { right: 0; }
-.hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-.hamburger.active .bar:nth-child(2) { opacity: 0; }
-.hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
-
-/* --- 品種ページ固有スタイル --- */
-.page-header {
-    padding-top: 120px;
-    padding-bottom: 40px;
-    text-align: center;
-}
-.page-title {
-    font-size: 2.2rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-}
-.page-subtitle { font-size: 0.9rem; color: #888; }
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-}
-
+/* ========================================
+   ourappleページ固有スタイル
+   ======================================== */
 /* --- 収穫カレンダー --- */
 .calendar-section {
     background: #fff5f5; /* 薄いピンク背景 */
@@ -1417,7 +975,6 @@ header {
 .bar-fuji { left: 85%; width: 25%; } /* 11月中旬〜 */
 .bar-orin { left: 80%; width: 25%; } /* 11月上旬〜 */
 .bar-shinano { left: 50%; width: 25%; } /* 10月上旬〜10月下旬 */
-
 
 /* --- 品種カードリスト --- */
 .variety-grid {
@@ -1529,7 +1086,6 @@ header {
 .stars { color: #ddd; }
 .stars .filled { color: var(--primary-color); }
 
-
 /* --- 比較表 --- */
 .table-section {
     margin-bottom: 60px;
@@ -1570,137 +1126,9 @@ header {
 /* 表の星 */
 .table-stars { color: var(--text-color); font-size: 0.8rem; letter-spacing: 2px; }
 
-/* --- Footer (共通) --- */
-footer {
-    background-color: #8d7b68;
-    color: var(--white);
-    padding: 60px 20px 20px;
-    margin-top: 80px;
-    font-size: 0.9rem;
-}
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 40px;
-}
-.footer-logo h3 { font-size: 1.4rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-.footer-links h4, .footer-contact h4 { font-size: 1.1rem; margin-bottom: 20px; color: #fff; }
-.footer-links ul li { margin-bottom: 10px; }
-.footer-links a { color: var(--white); opacity: 0.8; }
-.copyright { text-align: center; opacity: 0.6; font-size: 0.8rem; }
-
-
-/* --- レスポンシブ --- */
-@media (max-width: 768px) {
-    .pc-nav { display: none; }
-    .hamburger { display: block; }
-    .footer-content { grid-template-columns: 1fr; }
-    
-    /* カレンダーのスマホ対応: 横スクロールさせる */
-    .calendar-section { padding: 20px; overflow-x: auto; }
-    .harvest-chart { min-width: 600px; } /* スクロール用に幅確保 */
-
-    .comparison-table { display: block; overflow-x: auto; white-space: nowrap; }
-}
-
-/* contactページのCSS */
-/* --- 共通設定 --- */
-:root {
-    --primary-color: #e87a7a;
-    --secondary-color: #9dc88d;
-    --accent-color: #f4d35e;
-    --text-color: #5d554a;
-    --bg-color: #fdfbf7;
-    --white: #ffffff;
-    --border-color: #ececec;
-}
-
-* { box-sizing: border-box; }
-
-body {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    margin: 0;
-    line-height: 1.8;
-    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-a { text-decoration: none; color: var(--text-color); transition: 0.3s; }
-a:hover { opacity: 0.8; }
-ul { list-style: none; padding: 0; margin: 0; }
-img { max-width: 100%; height: auto; border-radius: 10px; }
-
-/* --- ヘッダー --- */
-header {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.pc-nav ul { display: flex; gap: 30px; }
-.pc-nav a { font-weight: 500; position: relative; }
-.pc-nav a.current { color: var(--primary-color); }
-.pc-nav a.current::after {
-    content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--secondary-color);
-}
-
-.hamburger { display: none; cursor: pointer; z-index: 1001; }
-.bar { width: 25px; height: 3px; background-color: var(--text-color); margin: 5px 0; transition: 0.4s; border-radius: 5px; }
-
-.sp-nav {
-    position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-    background-color: var(--bg-color); display: flex; flex-direction: column;
-    justify-content: center; align-items: center; transition: 0.4s; z-index: 1000;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-}
-.sp-nav.active { right: 0; }
-.hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-.hamburger.active .bar:nth-child(2) { opacity: 0; }
-.hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
-
-/* --- Contactページ固有スタイル --- */
-.page-header {
-    padding-top: 120px;
-    padding-bottom: 40px;
-    text-align: center;
-}
-.page-title {
-    font-size: 2.2rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-}
-.page-subtitle { font-size: 0.9rem; color: #888; }
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-}
-
+/* ========================================
+   Contactページ固有スタイル
+   ======================================== */
 /* 2カラムレイアウト (左：情報、右：フォーム) */
 .contact-wrapper {
     display: flex;
@@ -1808,10 +1236,6 @@ header {
     border-bottom: 2px solid #f0f0f0;
 }
 
-.form-group {
-    margin-bottom: 25px;
-}
-
 .form-label {
     display: block;
     margin-bottom: 8px;
@@ -1896,37 +1320,62 @@ textarea.form-control {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* --- Footer (共通) --- */
+/* ========================================
+   フッター（共通）
+   ======================================== */
 footer {
-    background-color: #8d7b68;
+    background-color: #8d7b68; /* 画像に近い落ち着いた茶色 */
     color: var(--white);
     padding: 60px 20px 20px;
     margin-top: 80px;
     font-size: 0.9rem;
 }
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 40px;
+
+
+
+.copyright {
+    text-align: center;
+    opacity: 0.6;
+    font-size: 0.8rem;
 }
-.footer-logo h3 { font-size: 1.4rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-.footer-links h4, .footer-contact h4 { font-size: 1.1rem; margin-bottom: 20px; color: #fff; }
-.footer-links ul li { margin-bottom: 10px; }
-.footer-links a { color: var(--white); opacity: 0.8; }
-.copyright { text-align: center; opacity: 0.6; font-size: 0.8rem; }
 
-
-/* --- レスポンシブ --- */
+/* ========================================
+   レスポンシブ（共通）
+   ======================================== */
 @media (max-width: 768px) {
     .pc-nav { display: none; }
     .hamburger { display: block; }
     .footer-content { grid-template-columns: 1fr; }
     
+    /* トップページ */
+    .hero-title { font-size: 2rem; }
+    .hero-images { transform: scale(0.9); }
+    .hero-img-box:nth-child(2) {
+        width: 180px; height: 180px;
+    }
+    .hero-img-box {
+        width: 140px; height: 140px;
+    }
+    section { padding: 50px 20px; }
+    
+    /* Newsページ */
+    .page-title { font-size: 1.8rem; }
+    .news-card-title { font-size: 1.1rem; }
+    
+    /* Aboutページ */
+    .timeline::after { left: 31px; }
+    .timeline-event { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .timeline-event.left, .timeline-event.right { text-align: left; left: 0; }
+    .timeline-event.left::after, .timeline-event.right::after { left: 23px; }
+    .stats-banner { flex-direction: column; gap: 40px; }
+    .about-main-visual { height: 250px; }
+    
+    /* ourappleページ */
+    .calendar-section { padding: 20px; overflow-x: auto; }
+    .harvest-chart { min-width: 600px; } /* スクロール用に幅確保 */
+    .comparison-table { display: block; overflow-x: auto; white-space: nowrap; }
+    
+    /* Contactページ */
     .contact-wrapper { flex-direction: column; }
     .contact-form { padding: 30px 20px; }
 }
